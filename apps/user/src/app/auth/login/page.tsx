@@ -45,27 +45,29 @@ export default function Login() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-8 md:p-24 bg-gray-50">
+    <main className="min-h-screen flex flex-col items-center justify-center p-8 md:p-24 bg-gray-50 dark:bg-dark-bg">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-primary-700 mb-2">
+          <h1 className="text-3xl font-bold text-primary-700 dark:text-primary-500 mb-2">
             Welcome Back
           </h1>
-          <p className="text-gray-700">Sign in to your WasteWise account</p>
+          <p className="text-gray-700 dark:text-dark-text/80">
+            Sign in to your WasteWise account
+          </p>
         </div>
 
         {message && (
-          <div className="mb-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg text-sm">
+          <div className="mb-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 rounded-lg text-sm">
             {message}
           </div>
         )}
 
         <form
           onSubmit={handleSubmit}
-          className="bg-white p-8 rounded-xl shadow-sm border border-gray-100"
+          className="bg-white dark:bg-dark-card p-8 rounded-xl shadow-sm border border-gray-100 dark:border-dark-border"
         >
           {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
+            <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 rounded-lg text-sm">
               {error}
             </div>
           )}
@@ -74,7 +76,7 @@ export default function Login() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-800 mb-1"
+                className="block text-sm font-medium text-gray-800 dark:text-dark-text mb-1"
               >
                 Email Address
               </label>
@@ -85,7 +87,7 @@ export default function Login() {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 dark:text-dark-text dark:bg-dark-card/80"
                 required
                 disabled={isLoading}
               />
@@ -94,7 +96,7 @@ export default function Login() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-800 mb-1"
+                className="block text-sm font-medium text-gray-800 dark:text-dark-text mb-1"
               >
                 Password
               </label>
@@ -105,7 +107,7 @@ export default function Login() {
                 onChange={(e) =>
                   setFormData({ ...formData, password: e.target.value })
                 }
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-dark-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 dark:text-dark-text dark:bg-dark-card/80"
                 required
                 disabled={isLoading}
               />
@@ -121,11 +123,11 @@ export default function Login() {
           </button>
         </form>
 
-        <p className="mt-4 text-center text-gray-700">
+        <p className="mt-4 text-center text-gray-700 dark:text-dark-text/80">
           Don't have an account?{" "}
           <Link
             href="/auth/signup"
-            className="text-primary-700 hover:text-primary-800 hover:underline"
+            className="text-primary-700 dark:text-primary-500 hover:text-primary-800 dark:hover:text-primary-400 hover:underline"
           >
             Create one
           </Link>

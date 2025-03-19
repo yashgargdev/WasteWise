@@ -129,27 +129,29 @@ export default function ScanPage() {
 
   if (!mounted) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p className="text-gray-700 text-lg">Loading scanner...</p>
+      <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-dark-bg">
+        <p className="text-gray-700 dark:text-dark-text-muted text-lg">
+          Loading scanner...
+        </p>
       </div>
     );
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-8 bg-gray-50">
-      <Card className="w-full max-w-2xl p-6 bg-white">
-        <h1 className="text-2xl font-bold mb-6 text-center text-gray-900">
+    <main className="flex min-h-screen flex-col items-center p-8 bg-gray-50 dark:bg-dark-bg">
+      <Card className="w-full max-w-2xl p-6 bg-white dark:bg-dark-card">
+        <h1 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-dark-text">
           Scan User QR Code
         </h1>
 
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          <div className="bg-red-100 dark:bg-red-900/20 border border-red-400 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded mb-4">
             {error}
           </div>
         )}
 
         {successMessage && (
-          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+          <div className="bg-green-100 dark:bg-green-900/20 border border-green-400 dark:border-green-800 text-green-700 dark:text-green-400 px-4 py-3 rounded mb-4">
             {successMessage}
           </div>
         )}
@@ -170,13 +172,13 @@ export default function ScanPage() {
               >
                 Upload QR Code Image
               </Button>
-              <p className="text-sm text-gray-700 mb-6">
+              <p className="text-sm text-gray-700 dark:text-dark-text-muted mb-6">
                 Upload an image containing a QR code
               </p>
             </div>
 
-            <div className="border-t border-gray-200 pt-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <div className="border-t border-gray-200 dark:border-dark-border pt-6">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-text mb-4">
                 Manual ID Entry
               </h3>
               <form onSubmit={handleManualInput} className="space-y-4">
@@ -185,7 +187,7 @@ export default function ScanPage() {
                     type="text"
                     name="userId"
                     placeholder="Enter User ID manually"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-dark-border dark:bg-dark-card dark:text-dark-text rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <Button
@@ -201,24 +203,34 @@ export default function ScanPage() {
 
         {userId && userInfo && (
           <div className="mt-6 space-y-4">
-            <div className="bg-green-100 p-4 rounded-lg">
-              <h3 className="font-semibold text-gray-900">User Identified</h3>
+            <div className="bg-green-100 dark:bg-green-900/20 p-4 rounded-lg">
+              <h3 className="font-semibold text-gray-900 dark:text-dark-text">
+                User Identified
+              </h3>
               <div className="space-y-2 mt-2">
-                <p className="text-sm text-gray-700">ID: {userId}</p>
-                <p className="text-sm text-gray-700">Name: {userInfo.name}</p>
-                <p className="text-sm text-gray-700">Email: {userInfo.email}</p>
-                <p className="text-sm font-semibold text-green-700">
+                <p className="text-sm text-gray-700 dark:text-dark-text-muted">
+                  ID: {userId}
+                </p>
+                <p className="text-sm text-gray-700 dark:text-dark-text-muted">
+                  Name: {userInfo.name}
+                </p>
+                <p className="text-sm text-gray-700 dark:text-dark-text-muted">
+                  Email: {userInfo.email}
+                </p>
+                <p className="text-sm font-semibold text-green-700 dark:text-green-400">
                   Current Points: {userInfo.points}
                 </p>
               </div>
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900">Process Items</h3>
+              <h3 className="font-semibold text-gray-900 dark:text-dark-text">
+                Process Items
+              </h3>
               <div className="grid grid-cols-2 gap-4">
                 <Button
                   onClick={() => processWaste("plastic")}
-                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                  className="bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50"
                   disabled={processing}
                 >
                   {processing
@@ -227,7 +239,7 @@ export default function ScanPage() {
                 </Button>
                 <Button
                   onClick={() => processWaste("paper")}
-                  className="bg-yellow-600 hover:bg-yellow-700 text-white"
+                  className="bg-yellow-600 hover:bg-yellow-700 text-white disabled:opacity-50"
                   disabled={processing}
                 >
                   {processing
@@ -236,7 +248,7 @@ export default function ScanPage() {
                 </Button>
                 <Button
                   onClick={() => processWaste("glass")}
-                  className="bg-purple-600 hover:bg-purple-700 text-white"
+                  className="bg-purple-600 hover:bg-purple-700 text-white disabled:opacity-50"
                   disabled={processing}
                 >
                   {processing
@@ -245,7 +257,7 @@ export default function ScanPage() {
                 </Button>
                 <Button
                   onClick={() => processWaste("metal")}
-                  className="bg-gray-600 hover:bg-gray-700 text-white"
+                  className="bg-gray-600 hover:bg-gray-700 text-white disabled:opacity-50"
                   disabled={processing}
                 >
                   {processing
@@ -265,11 +277,10 @@ export default function ScanPage() {
                   fileInputRef.current.value = "";
                 }
               }}
-              variant="outline"
-              className="w-full mt-4 border-gray-300 text-gray-700 hover:bg-gray-100"
+              className="w-full mt-6 border border-gray-300 dark:border-dark-border bg-white dark:bg-dark-card text-gray-700 dark:text-dark-text hover:bg-gray-50 dark:hover:bg-dark-card/80 transition-colors disabled:opacity-50"
               disabled={processing}
             >
-              Reset
+              Reset Machine
             </Button>
           </div>
         )}

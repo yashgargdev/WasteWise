@@ -130,9 +130,9 @@ export default function RedeemPoints() {
 
   if (loading) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-gray-50">
+      <main className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-dark-bg">
         <div className="text-center">
-          <div className="text-2xl font-semibold text-primary-600">
+          <div className="text-2xl font-semibold text-primary-600 dark:text-primary-400">
             Loading...
           </div>
         </div>
@@ -141,12 +141,12 @@ export default function RedeemPoints() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 p-8">
+    <main className="min-h-screen bg-gray-50 dark:bg-dark-bg p-8">
       <div className="max-w-4xl mx-auto">
         <div className="mb-4">
           <Link
             href="/dashboard"
-            className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-700"
+            className="inline-flex items-center text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300"
           >
             <svg
               className="w-4 h-4 mr-1"
@@ -165,23 +165,23 @@ export default function RedeemPoints() {
             Back to Dashboard
           </Link>
         </div>
-        <header className="bg-white shadow-sm rounded-lg p-6 mb-8">
-          <h1 className="text-2xl font-bold text-gray-800">
+        <header className="bg-white dark:bg-dark-card shadow-sm rounded-lg p-6 mb-8">
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-dark-text">
             Redeem Your Points
           </h1>
-          <p className="text-gray-700 mt-1">
+          <p className="text-gray-700 dark:text-dark-text-muted mt-1">
             Current Balance: {user?.points || 0} points
           </p>
         </header>
 
         {redeemStatus.error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+          <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 rounded-lg">
             {redeemStatus.error}
           </div>
         )}
 
         {redeemStatus.success && (
-          <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg">
+          <div className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 rounded-lg">
             {redeemStatus.success}
           </div>
         )}
@@ -190,17 +190,17 @@ export default function RedeemPoints() {
           {voucherOptions.map((voucher) => (
             <div
               key={voucher.id}
-              className="bg-white rounded-lg shadow-sm p-6 border border-gray-100"
+              className="bg-white dark:bg-dark-card rounded-lg shadow-sm p-6 border border-gray-100 dark:border-dark-border"
             >
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-gray-800">
+                <h2 className="text-xl font-semibold text-gray-800 dark:text-dark-text">
                   {voucher.name}
                 </h2>
-                <div className="text-sm font-medium text-gray-600">
+                <div className="text-sm font-medium text-gray-600 dark:text-dark-text-muted">
                   {voucher.pointsCost} points
                 </div>
               </div>
-              <div className="mb-6 h-32 relative bg-gray-50 rounded-lg">
+              <div className="mb-6 h-32 relative bg-gray-50 dark:bg-dark-card/50 rounded-lg">
                 {/* Placeholder for voucher image */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <span className="text-4xl">
@@ -230,7 +230,7 @@ export default function RedeemPoints() {
                 }
                 className={`w-full py-2 px-4 rounded-lg transition-colors ${
                   (user?.points || 0) < voucher.pointsCost
-                    ? "bg-gray-100 text-gray-500 cursor-not-allowed"
+                    ? "bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 cursor-not-allowed"
                     : "bg-primary-600 text-white hover:bg-primary-700"
                 } ${
                   redeemStatus.loading && selectedVoucher === voucher.id

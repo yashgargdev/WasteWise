@@ -61,9 +61,9 @@ export default function HistoryPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-gray-50">
+      <main className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-dark-bg">
         <div className="text-center">
-          <div className="text-2xl font-semibold text-primary-600">
+          <div className="text-2xl font-semibold text-primary-600 dark:text-primary-400">
             Loading...
           </div>
         </div>
@@ -72,12 +72,12 @@ export default function HistoryPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 p-8">
+    <main className="min-h-screen bg-gray-50 dark:bg-dark-bg p-8">
       <div className="max-w-4xl mx-auto">
         <div className="mb-4">
           <Link
             href="/dashboard"
-            className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-700"
+            className="inline-flex items-center text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300"
           >
             <svg
               className="w-4 h-4 mr-1"
@@ -97,37 +97,37 @@ export default function HistoryPage() {
           </Link>
         </div>
 
-        <header className="bg-white shadow-sm rounded-lg p-6 mb-8">
-          <h1 className="text-2xl font-bold text-gray-800">
+        <header className="bg-white dark:bg-dark-card shadow-sm rounded-lg p-6 mb-8">
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-dark-text">
             Recycling History
           </h1>
-          <p className="text-gray-700 mt-1">
+          <p className="text-gray-700 dark:text-dark-text-muted mt-1">
             View your recycling activity and earned points
           </p>
-          <div className="mt-4 text-sm text-gray-600">
+          <div className="mt-4 text-sm text-gray-600 dark:text-dark-text-muted">
             Total Items: {history.length} | Total Points:{" "}
             {history.reduce((sum, item) => sum + item.points, 0)}
           </div>
         </header>
 
-        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-dark-card rounded-lg shadow-sm">
           {history.length > 0 ? (
-            <div className="divide-y divide-gray-200">
+            <div className="divide-y divide-gray-200 dark:divide-dark-border">
               {history.map((record) => (
                 <div
                   key={record.id}
-                  className="p-6 flex items-center justify-between hover:bg-gray-50"
+                  className="p-6 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-dark-card/80"
                 >
                   <div>
-                    <h3 className="text-lg font-medium text-gray-800">
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-dark-text">
                       {record.type}
                     </h3>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-gray-600 dark:text-dark-text-muted">
                       {formatDate(record.createdAt)}
                     </p>
                   </div>
                   <div className="text-right">
-                    <div className="text-lg font-semibold text-green-600">
+                    <div className="text-lg font-semibold text-green-600 dark:text-green-400">
                       +{record.points} points
                     </div>
                   </div>
@@ -135,7 +135,7 @@ export default function HistoryPage() {
               ))}
             </div>
           ) : (
-            <div className="p-8 text-center text-gray-600">
+            <div className="p-8 text-center text-gray-600 dark:text-dark-text-muted">
               <p className="mb-4">
                 No recycling history yet. Start recycling items to earn points!
               </p>
